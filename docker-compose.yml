@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: auth_api
+      POSTGRES_USER: auth_api
+      POSTGRES_PASSWORD: auth_api_dev_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U auth_api -d auth_api"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: production
+      SECRET_KEY: docker-development-flask-secret-change-in-production
+      JWT_SECRET_KEY: docker-development-jwt-secret-change-in-production-123456
+      DATABASE_URL: postgresql+psycopg://auth_api:auth_api_dev_password@db:5432/auth_api
+      RATELIMIT_STORAGE_URI: memory://
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

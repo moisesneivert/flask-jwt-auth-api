@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install dependencies",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pip", "install", "-r", "requirements-dev.txt"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pytest"],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Database upgrade",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "flask", "--app", "run.py", "db", "upgrade"],
+      "problemMatcher": []
+    }
+  ]
+}
