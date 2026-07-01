@@ -2,7 +2,7 @@
 
 Production-oriented REST API demonstrating secure user authentication and authorization with Flask, JWT access/refresh tokens, SQLAlchemy, migrations, rate limiting, automated tests and CI.
 
-> This project implements JWT-based authentication. It is **not** an OAuth 2.0 authorization server.
+Flask REST API with JWT access and refresh tokens, token rotation, revocation, SQLAlchemy, tests, Docker and CI.
 
 ## Highlights
 
