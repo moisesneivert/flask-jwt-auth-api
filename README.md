@@ -153,7 +153,7 @@ The API is available at `http://127.0.0.1:5000`.
 - Use Redis or another shared persistent backend for rate limiting when running multiple instances.
 - Rotate secrets using a controlled migration strategy.
 - Add email verification and a time-limited password-reset flow before using this as a public identity system.
-- JWT is a token format; this project does not implement the OAuth 2.0 authorization framework.
+- Flask REST API with JWT access and refresh tokens, token rotation, revocation, role-based access control, tests, Docker and CI.
 
 ## License
 
